@@ -150,6 +150,7 @@ function GuardarEnCatalogo(){
 
     var producto = new Producto(obtenNombre.value,obtenPrecio.value,cantidad.value);
     catalogo.push(producto);
+    window.alert("Se ha agregado el producto al catálogo");
      }
 
 
