@@ -156,7 +156,7 @@ function GuardarEnCatalogo(){
     }else{
         var producto = new Producto(nombre,precio,cantidad);
         catalogo.push(producto);
-        window.alert("Se ha agregado el producto al catálogo"+nombre);
+        window.alert("Se ha agregado el producto "+nombre+ " al catálogo");
     }
 
     
