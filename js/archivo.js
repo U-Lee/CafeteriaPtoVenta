@@ -131,26 +131,35 @@ function MostrarCatalogo(){
     
 let tablaCatalogo = document.getElementById('tablaCatalogo');
 
-// Recorriendo los datos de ejemplo
+//Para recorrer el catálogo
 for (let i = 0; i < catalogo.length; i++) {
-    // Creando los 'td' que almacenará cada parte de la información del usuario actual
+
+    //Las columnas que mostraran el catalogo en pantalla
     let nombre = `<td>${catalogo[i].nombre}        </td>    `;
     let precio = `<td>$${catalogo[i].precio}       </td>`;
     let cantidad = `<td>${catalogo[i].cantidad}    </td>`;
-
 
     tablaCatalogo.innerHTML += `<tr>${nombre   +precio + cantidad }</tr>`;
 }
 }
 
+//Validar los campos y guardar el producto
 function GuardarEnCatalogo(){
-    var obtenNombre = document.getElementById("nombre");
-    var obtenPrecio = document.getElementById("precio");
-    var cantidad = document.getElementById("cantidad");
+    var nombre = document.getElementById("nombre").value;
+    var precio = document.getElementById("precio").value;
+    var cantidad = document.getElementById("cantidad").value;
 
-    var producto = new Producto(obtenNombre.value,obtenPrecio.value,cantidad.value);
-    catalogo.push(producto);
-    window.alert("Se ha agregado el producto al catálogo");
+    //Validando que ningún campo este vacío
+    if(nombre=="" || precio=="" ||cantidad==""){
+        window.alert("Algún campo esta vacio")
+        return false
+    }else{
+        var producto = new Producto(nombre,precio,cantidad);
+        catalogo.push(producto);
+        window.alert("Se ha agregado el producto al catálogo"+nombre);
+    }
+
+    
      }
 
 
