@@ -11,7 +11,11 @@ function error(){
     console.error("La fecha y la hora están sincronizadas con la de tu equipo de computo, por lo que no lo podrás modificar desde la página web");
 }
 
-
+function info(){
+    let mensaje="Presiona ctrl+shift+j para abrir la consola en Firefox"    
+    mensaje.innerHTML=mensaje;
+    window.alert(mensaje);
+}
 
 (function(){
     var actualizarHora=function(){
@@ -114,6 +118,8 @@ var catalogo = [
     { nombre: 'Crepas', precio: 32.50, cantidad: 6}
 ];
 
+let tablaCatalogo = document.getElementById('tablaCatalogo');
+
 class Producto{
     constructor(nombre, precio, cantidad){
         this.nombre=nombre;
@@ -129,7 +135,8 @@ class Producto{
 
 function MostrarCatalogo(){
     
-let tablaCatalogo = document.getElementById('tablaCatalogo');
+//let tablaCatalogo = document.getElementById('tablaCatalogo');
+
 
 //Para recorrer el catálogo
 for (let i = 0; i < catalogo.length; i++) {
@@ -143,6 +150,14 @@ for (let i = 0; i < catalogo.length; i++) {
 }
 }
 
+function prueba(){
+    document.getElementById("enviar").addEventListener("click",displayDate);
+    function displayDate(){
+    document.getElementById("demo").innerHTML=Date();
+}
+}
+
+
 //Validar los campos y guardar el producto
 function GuardarEnCatalogo(){
     var nombre = document.getElementById("nombre").value;
@@ -155,16 +170,50 @@ function GuardarEnCatalogo(){
         return false
     }else{
         var producto = new Producto(nombre,precio,cantidad);
-        catalogo.push(producto);
-        window.alert("Se ha agregado el producto "+nombre+ " al catálogo");
-    }
+        catalogo.push(producto);  //Se guarda en arreglo
+        window.alert("Se ha agregado el producto "+nombre+ " al catálogo"); //Mensaje de confirmacion
+        
+        //Parametros para imprimir en el catalogo, se da su formato
+        let nombre1 = `<td>${producto.nombre}        </td>    `;
+        let precio1 = `<td>$${producto.precio}       </td>`;
+        let cantidad1 = `<td>${producto.cantidad}    </td>`;
 
-    
+        //Se imprime al final de la tablaCatalogo
+        tablaCatalogo.innerHTML += `<tr>${nombre1   +precio1 + cantidad1 }</tr>`;
+
+    }    
      }
 
 
-   
+
+     //window.onload = init;
+     function init(){
+         botonEnvio = document.querySelector('[type="button"]');
+         nuevoItem = document.querySelector('[type="text"]');
+         listaCompra = document.getElementById("listaCompra");
+         
+         botonEnvio.addEventListener("click",anadir);
+     }
 
 
+     function anadir(e){
+         evento = e || window.event;
+         if (nuevoItem.value == ""){
+             evento.preventDefault();
+         }else{
+         var lista = document.createElement("li");
+         lista.innerHTML = nuevoItem.value;
+         lista.addEventListener("dblclick",eliminarLi);
+         listaCompra.appendChild(lista);
+         nuevoItem.value = "";
 
 
+         tablaCatalogo.addEventListener("dblclick",eliminarLi);
+
+         }
+     }
+
+     function eliminarLi(){
+         this.parentNode.removeChild(this);
+     }
+/*..*/
