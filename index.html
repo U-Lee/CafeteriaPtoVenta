@@ -40,7 +40,9 @@
   <div id="menu">
     <ul id="nav">
       <li><a href="https://u-lee.github.io/PILARESfeminismo/">Mi primer página</a></li>
-      <li><a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwjwxZWigbPsAhUQLKwKHRICDlkQFjACegQIBRAC&url=http%3A%2F%2Frevistas.unam.mx%2Findex.php%2Fhistoriagenda%2Farticle%2Fdownload%2F65416%2F57344&usg=AOvVaw0egMzSLHf17tjM1i5JH1As">Conoce más</a></li>
+      <li><a
+          href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwjwxZWigbPsAhUQLKwKHRICDlkQFjACegQIBRAC&url=http%3A%2F%2Frevistas.unam.mx%2Findex.php%2Fhistoriagenda%2Farticle%2Fdownload%2F65416%2F57344&usg=AOvVaw0egMzSLHf17tjM1i5JH1As">Conoce
+          más</a></li>
       <li><a href="https://www.pinterest.es/angelesalvarez/feminismo/">Galería</a></li>
       <li><a href="https://pilares.cdmx.gob.mx/inicio">PILARES</a></li>
       <li><a href="https://www.google.com">Búsqueda</a></li>
@@ -49,7 +51,7 @@
   </div>
 
   <div id="container">
-    <div id="content">   
+    <div id="content">
       <h1>Ingresa Producto</h1>
       <div id="box">
         <form>
@@ -60,16 +62,18 @@
             <label for="Precio"> Precio: </label><br>
             <input type="number" id="precio" name=precio required><br>
             <label for="Cantidad">Cantidad: </label><br>
-            <input type="number" id="cantidad" name="cantidad" required><br>                        
-          </div>                    
+            <input type="number" id="cantidad" name="cantidad" required><br>
+          </div>
         </form>
-        <input type="submit" value="Enviar" onclick="GuardarEnCatalogo()" > <br>     
-       <!--<input type="submit" value="Refrescar Catálogo" onclick="MostrarCatalogo()">-->
+        <input type="submit" value="Enviar" onclick="GuardarEnCatalogo()"> <br>
+
       </div>
-      <h1>Catalogo</h1>
+      <h1>Catálogo</h1>
       <div id="box">
-        
+
+
         <div id="divTabla">
+
           <table>
             <thead>
               <tr>
@@ -82,11 +86,38 @@
 
             </tbody>
           </table>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div id="container">
+      <div id="content">
+        <h1>Carrito de Compras</h1>
+        <div id="box">
+          <label for="anadir">Mi lista de la compra:</label><br>
+          <label for="Nombre de la bebida">Nombre: </label><br>
+          <input type="textCompra" id="nombreCompra"><br>
+          <label for="Precio"> Precio: </label><br>
+          <input type="number" id="precioCompra" name="precio" required><br>
+          <label for="Cantidad">Cantidad: </label><br>
+          <input type="number" id="cantidadCompra" name="cantidad" required><br>
+
+          <input type="button" id="compra" value="Añadir al carrito de compras" onclick="init()">
+
+          <p>Articulos en el carrito</p>
+          <ul id="listaCompra"></ul>
+
+          <tr>
+            <td>Total: $</td>
+            <td><output type="text" id="txtTotal">
+          </tr>
+
         </div>
       </div>
     </div>
-
-
 
   </div>
 
@@ -113,13 +144,24 @@
             <p id="ampm" class="ampm"></p>
             <p id="segundos" class="segundos"></p>
           </div>
-        </div>      
+        </div>
       </div>
     </div>
     <p>Has doble Click sobre la fecha y reloj para obtener información en la consola sobre su configuración</p>
   </div>
 
   <script src="js/archivo.js"></script>
+  <!--TABLA PARA EL REGISTRO
+  <div id="container">
+
+    <label for="Nombre de la bebida">Nombre: </label><br>
+    <input type="textCompra" id="nombre" name="nombre" required><br>
+    <label for="Precio"> Precio: </label><br>
+    <input type="number" id="precio" name=precio required><br>
+    <label for="Cantidad">Cantidad: </label><br>
+    <input type="number" id="cantidad" name="cantidad" required><br>                        
+  </div>             
+-->
 
 
 

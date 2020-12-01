@@ -181,39 +181,71 @@ function GuardarEnCatalogo(){
         //Se imprime al final de la tablaCatalogo
         tablaCatalogo.innerHTML += `<tr>${nombre1   +precio1 + cantidad1 }</tr>`;
 
+        
+
     }    
      }
 
-
+var total=0
 
      //window.onload = init;
      function init(){
-         botonEnvio = document.querySelector('[type="button"]');
-         nuevoItem = document.querySelector('[type="text"]');
-         listaCompra = document.getElementById("listaCompra");
+         botonEnvio = document.querySelector('[id="compra"]');
+         //nuevoItem = document.querySelector('[type="textCompra"]');
+         nuevoItemNombre = document.getElementById("nombreCompra").value;
+         nuevoItemPrecio = document.getElementById("precioCompra").value;
+         nuevoItemCantidad = document.getElementById("cantidadCompra").value;
+
+         subtotal= nuevoItemPrecio*nuevoItemCantidad;         
+         //total=total+subtotal
+         total=total+subtotal
+         document.getElementById("txtTotal").innerHTML= total;
+
+         //Parametros para imprimir en el catalogo, se da su formato
+        nombreCompra = `<td>${nuevoItemNombre}        </td>    `;
+        precioCompra = `<td>$${nuevoItemPrecio}       </td>`;
+        cantidadCompra = `<td>${nuevoItemCantidad}    </td>`;
+
+        //Se imprime al final de la tablaCatalogo
+        //tablaCatalogo.innerHTML += `<tr>${nombre   +precio + cantidad }</tr>`;
+
+        var lista = document.createElement("li");
+        lista.innerHTML = `<tr>${nombreCompra +"   " +precioCompra +"   "+ cantidadCompra}</tr>`+"<br>Subtotal: $"+subtotal
+
+        lista.addEventListener("dblclick",eliminarLi);
+        //lista.addEventListener("dblclick",agregarLi);
+        listaCompra.appendChild(lista);
+
+        
+      //   listaCompra = document.getElementById("listaCompra");
          
-         botonEnvio.addEventListener("click",anadir);
+       //  botonEnvio.addEventListener("click",anadir);
      }
 
 
-     function anadir(e){
+
+     /*function anadir(e){        
+
          evento = e || window.event;
-         if (nuevoItem.value == ""){
+         if (nuevoItemNombre.value == ""){
              evento.preventDefault();
          }else{
          var lista = document.createElement("li");
-         lista.innerHTML = nuevoItem.value;
+         lista.innerHTML = `<tr>${nombreCompra +"   " +precioCompra +"   "+ cantidadCompra}</tr>`+"<br>Subtotal: $"+subtotal                  
+
          lista.addEventListener("dblclick",eliminarLi);
+         //lista.addEventListener("dblclick",agregarLi);
          listaCompra.appendChild(lista);
-         nuevoItem.value = "";
+         //nuevoItem.value = "";
 
-
-         tablaCatalogo.addEventListener("dblclick",eliminarLi);
+        // tablaCatalogo.addEventListener("dblclick",eliminarLi);
 
          }
-     }
+     }*/
 
      function eliminarLi(){
-         this.parentNode.removeChild(this);
+         this.parentNode.removeChild(this);        
      }
+
+
 /*..*/
